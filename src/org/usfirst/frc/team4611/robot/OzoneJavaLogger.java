@@ -77,7 +77,7 @@ public class OzoneJavaLogger {
 				.append('[').append(record.getSourceClassName()).append(']')
 				.append('[').append(record.getMessage()).append(']')
 				.append('\n');
-			return b.toString();
+			 return b.toString();
 		}		
 	}
 	
