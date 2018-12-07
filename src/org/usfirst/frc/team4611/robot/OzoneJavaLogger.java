@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 public class OzoneJavaLogger {
 	
 	private static OzoneJavaLogger instance	= null;
+	private long startupTime = System.currentTimeMillis();
 	private Logger logger	= Logger.getLogger("org.usfirst.frc.team4611.robot");
 	private boolean	initted	= false;
 
@@ -71,7 +73,7 @@ public class OzoneJavaLogger {
 			b.setLength(0);
 		
 			b.append("[" + record.getLevel()).append("]")
-				.append('[').append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"))).append(']')
+				.append('[').append(LocalDateTime.now().minus(startupTime, ChronoUnit.MILLIS).format(DateTimeFormatter.ofPattern("mm:ss.SSS"))).append(']')
 				.append('[').append(record.getSourceClassName()).append(']')
 				.append('[').append(record.getMessage()).append(']')
 				.append('\n');
@@ -95,7 +97,7 @@ public class OzoneJavaLogger {
 		
 		OzoneJavaLogger.getInstance().init(Level.FINE);
 		
-		Logger logger	= Logger.getLogger("org.usfirst.frc.team4611.robot.main");
+		Logger logger = Logger.getLogger("org.usfirst.frc.team4611.robot.main");
 		logger.info("Information");
 		logger.severe("Severe");
 		LogTest logTest	=  OzoneJavaLogger.getInstance().new LogTest();

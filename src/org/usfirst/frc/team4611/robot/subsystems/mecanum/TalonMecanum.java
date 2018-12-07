@@ -1,12 +1,11 @@
 package org.usfirst.frc.team4611.robot.subsystems.mecanum;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team4611.robot.OI;
-import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.OzoneJavaLogger.LogTest;
+import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.commands.teleop.drive.Move;
 import org.usfirst.frc.team4611.robot.networktables.NetTableManager;
 import org.usfirst.frc.team4611.robot.subsystems.baseclasses.MecanumBase;
@@ -18,7 +17,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Timer;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.DistanceFollower;
-import jaci.pathfinder.followers.EncoderFollower;
 import jaci.pathfinder.modifiers.TankModifier;
 
 public class TalonMecanum extends MecanumBase {
@@ -38,6 +36,7 @@ public class TalonMecanum extends MecanumBase {
 	public final double INCH_PU_MULT = 215.910640625;
 	
 	public final double METER_PU_MULT = 39.3701 * 215.910640625;
+	
 	
 	private double velocity1;
 	private double velocity2;
@@ -242,9 +241,8 @@ public class TalonMecanum extends MecanumBase {
 	public double getVelocity() {
 		// TODO Auto-generated method stub
 		//returns in meters per second
-		
+
 		return getMetersTraveled()/(driveT.get()/1000);
 	}
 	
-
 }
